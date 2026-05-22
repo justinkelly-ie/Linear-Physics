@@ -12,7 +12,7 @@ Modern physics is plagued by infinities. Continuous wave equations, singularitie
 
 **LUniverse** (Linear Universe) dispenses with that. 
 
-Built on [Norman Wildberger's](https://njwildberger.com/) Finitist Mathematics and Rational Chromogeometry, this project models the universe as a discrete, combinatorial engine. In LUniverse, continuous fields are illusions; particles are simply algebraic constraints (Spread Polynomials) acting upon a discrete integer pixel grid (the Maxel substrate).
+Built on [Norman Wildberger's](https://njwildberger.com/) Finitist Mathematics and Rational Chromogeometry, this project models the universe as a discrete, combinatorial engine. In LUniverse, continuous fields are illusions; particles are simply algebraic constraints (Spread Polynomials) acting upon a discrete integer pixel grid (an indivisible, linear computational substrate).
 
 ### Why "Linear"?
 This project is written in **[Idris 2](https://github.com/idris-lang/Idris2)** to leverage its **Quantitative Type Theory (QTT)** and **Linear Types**. In QTT, a linear resource must be consumed *exactly once*. We use this compiler-level constraint to natively enforce absolute physical laws:
@@ -20,7 +20,7 @@ This project is written in **[Idris 2](https://github.com/idris-lang/Idris2)** t
 *   **Baryogenesis:** Matter naturally emerges from the geometry without requiring arbitrary parameters.
 *   **Color Confinement:** Quarks are trapped mathematically because their algebraic topology fails to evaluate to integer coordinates on the grid. It isn't a "force"—it's a computational limit.
 *   **Biological Uniqueness:** The specific natural foldings of life (e.g., the DNA double-helix or the Alpha Helix) are not evolutionary accidents. QTT natively enforces the No-Cloning theorem; thus, these structures emerge as the strictly unique, linear mathematical solutions capable of geometrically neutralizing topological debt without causing a Grid Fracture.
-*   **Autopoiesis & Evolution:** Life is formalized as a linear wrapper. Cellular replication (Mitosis/Meiosis) cannot "copy" state in violation of quantum mechanics. Instead, organisms linearly consume unallocated environmental substrates (Maxels) to instantiate fresh parallel identities, preserving absolute geometric lineage right down to the fundamental discrete grid.
+*   **Autopoiesis & Evolution:** Life is formalized as a linear wrapper. Cellular replication (Mitosis/Meiosis) cannot "copy" state in violation of quantum mechanics. Instead, organisms linearly consume unallocated environmental space (discrete physical resources that strictly enforce linearity and prevent cloning) to instantiate fresh parallel identities, preserving absolute geometric lineage right down to the fundamental discrete grid.
 
 Whether it is a subatomic quantum scattering event or the cellular division of a biological organism, if an interaction violates these fundamental topological laws, **the code simply will not compile.**
 
