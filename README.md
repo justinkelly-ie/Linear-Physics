@@ -1,4 +1,4 @@
-# Idris2 Linear Universe (LUniverse) [^1]
+# Idris2 Linear Universe (LUniverse)
 
 **A deterministic, discrete-geometry physics engine where the laws of nature are enforced at compile-time.**
 
@@ -56,7 +56,7 @@ pack build idris2-LUniverse.ipkg
 # (This leverages Hedgehog to formally verify particle interactions)
 pack run tests/tests.ipkg
 ```
-If you are unfamiliar with Idris2 but wish to explore the project, download Google Antigravity and have it assist you with the steps above, you can then prompt it to explore the model textually.
+If you are unfamiliar with Idris2 but wish to explore the project, download Google Antigravity [^1] and have it assist you with the steps above; you can then prompt it to explore the model textually.
 
 ---
 
