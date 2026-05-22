@@ -22,7 +22,7 @@ This project is written in **Idris 2** to leverage its **Quantitative Type Theor
 *   **Biological Uniqueness:** The specific natural foldings of life (e.g., the DNA double-helix or the Alpha Helix) are not evolutionary accidents. QTT natively enforces the No-Cloning theorem; thus, these structures emerge as the strictly unique, linear mathematical solutions capable of geometrically neutralizing topological debt without causing a Grid Fracture.
 *   **Autopoiesis & Evolution:** Life is formalized as a linear wrapper. Cellular replication (Mitosis/Meiosis) cannot "copy" state in violation of quantum mechanics. Instead, organisms linearly consume unallocated environmental substrates (Maxels) to instantiate fresh parallel identities, preserving absolute geometric lineage right down to the fundamental discrete grid.
 
-If an interaction violates physics, **the code simply will not compile.**
+Whether it is a subatomic quantum scattering event or the cellular division of a biological organism, if an interaction violates these fundamental topological laws, **the code simply will not compile.**
 
 ---
 
