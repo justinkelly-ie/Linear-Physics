@@ -7,15 +7,15 @@
 
 ---
 
-## The Hook
-Modern physics is plagued by infinity. Continuous wave equations, singularities, arbitrary constants, and abstract parameters like "gluons" or "virtual particles" dominate the Standard Model. 
+## Significance
+Modern physics is plagued by infinities. Continuous wave equations, singularities, arbitrary constants, and abstract parameters like "gluons" or "virtual particles" dominate the Standard Model. 
 
-**LUniverse** (Linear Universe) throws that away. 
+**LUniverse** (Linear Universe) dispenses with that. 
 
-Built on Norman Wildberger's Finitist Mathematics and Rational Chromogeometry, this project models the universe not as a continuous expanse, but as a discrete, Turing-complete combinatorial engine. In LUniverse, continuous fields are illusions; particles are simply algebraic constraints (Spread Polynomials) acting upon a discrete integer grid (the Maxel substrate).
+Built on Norman Wildberger's Finitist Mathematics and Rational Chromogeometry, this project models the universe as a discrete, combinatorial engine. In LUniverse, continuous fields are illusions; particles are simply algebraic constraints (Spread Polynomials) acting upon a discrete integer pixel grid (the Maxel substrate).
 
 ### Why "Linear"?
-This project is written in **Idris 2** to heavily leverage its **Quantitative Type Theory (QTT)** and **Linear Types**. In QTT, a linear resource must be consumed *exactly once*. We use this compiler-level constraint to natively enforce absolute physical laws:
+This project is written in **Idris 2** to leverage its **Quantitative Type Theory (QTT)** and **Linear Types**. In QTT, a linear resource must be consumed *exactly once*. We use this compiler-level constraint to natively enforce absolute physical laws:
 *   **Energy Conservation:** You cannot compile an interaction that destroys or duplicates a quantum state.
 *   **Baryogenesis:** Matter naturally emerges from the geometry without requiring arbitrary parameters.
 *   **Color Confinement:** Quarks are trapped mathematically because their algebraic topology fails to evaluate to integer coordinates on the grid. It isn't a "force"—it's a computational limit.
@@ -54,6 +54,7 @@ pack build idris2-LUniverse.ipkg
 # (This leverages Hedgehog to formally verify particle interactions)
 pack run tests/tests.ipkg
 ```
+If you are unfamiliar with Idris2 but wish to explore the project, download Google Antigravity and have it assist you with the steps above, you can then prompt it to explore the model textually.
 
 ---
 

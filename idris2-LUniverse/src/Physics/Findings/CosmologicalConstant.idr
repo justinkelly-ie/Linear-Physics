@@ -5,6 +5,7 @@ import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
 import Physics.QuantumGates
+import Universe.CosmicPartition
 
 %default total
 
@@ -15,7 +16,7 @@ import Physics.QuantumGates
 ||| integrates over continuous, infinite space and predicts an energy density 
 ||| 10^120 times larger than what is actually observed in cosmology!
 |||
-||| In the Primorial Architecture, the universe is NOT continuous or infinite.
+||| In the LUniverse model, the universe is NOT continuous or infinite.
 ||| It is structurally bounded by the 210 Prime Gate permutations. The vacuum 
 ||| energy is simply the topological debt limit of the fundamental gates, completely
 ||| zeroing out the 10^120 error by proving the grid cannot physically exceed
@@ -30,12 +31,16 @@ public export
 implementation CalculatesVacuumEnergy DarkPlusMatter where
   predictCosmologicalConstant (MkDarkPlusMatter gen poly (MkDense xs) flavor) =
     -- The vacuum energy density is exactly proportional to the Dark Energy ratio
-    -- (128 / 210) bounded by the 137-grid scaling factor.
+    -- (128 / 210) bounded by the dynamic scaling property of the partition state.
     -- Because our model uses discrete combinatorial bounds rather than integrating 
     -- to infinity, the result is finite and identically matches observed cosmology!
-    let darkEnergyRatio = 128.0 / 210.0
-        gridLimit = 137.0
-        -- Normalization to the 137-Grid
+    let deStates = cast (length constructPrimorialGrid.darkEnergy)
+        totalStates = cast primorialManifold
+        darkEnergyRatio = deStates / totalStates
+        
+        gridLimit : Double
+        gridLimit = calculateGridLimit constructPrimorialGrid
+        -- Normalization to the dynamic grid limit derived from the partition state
     in darkEnergyRatio / gridLimit
 
 ||| Verifies that the Vacuum Energy Density is finite and strictly bounded 

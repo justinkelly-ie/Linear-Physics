@@ -1,6 +1,6 @@
-module Physics.Epochs.Cosmology
+module Physics.Evolution.Cosmology
 
-import Physics.Epochs.Core
+import Physics.Evolution.Transition
 
 %default total
 
@@ -42,7 +42,7 @@ record CosmologicalScale where
 
 ||| Evaluates the scale of an Epoch without physically consuming it.
 public export
-evaluateScale : {n : Nat} -> {a : Type} -> {label : a} -> (0 _ : Epoch n a label) -> CosmologicalScale
+evaluateScale : {n : Nat} -> {a : Type} -> {label : a} -> (0 _ : Phase False n a label) -> CosmologicalScale
 evaluateScale {n} _ = MkCosmologicalScale n (pow137 n)
 
 ||| A static check that Epoch 38 yields the empirical Eddington limit.

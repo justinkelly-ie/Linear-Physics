@@ -13,7 +13,7 @@ import Universe.DarkPlusMatter
 ||| transitions through the 137-Grid.
 |||
 ||| STRUCTURAL DISCOVERY: The six gates map directly onto the 5 phases of the
-||| universal Adaptive Cycle (see Physics.ScaleOrders.AdaptiveCycle):
+||| universal Adaptive Cycle (see Physics.Evolution.Transition):
 |||
 |||   Gate n=2  (BackgroundGate) → Phase 1: UNFOLDING
 |||     The first binary bit flips. Primordial vacuum potential unfolds into

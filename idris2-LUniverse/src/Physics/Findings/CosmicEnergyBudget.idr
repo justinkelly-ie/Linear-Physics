@@ -1,6 +1,7 @@
 module Physics.Findings.CosmicEnergyBudget
 
 import Universe.CosmicPartition
+import Math.MaxelNL
 
 %default total
 
@@ -12,8 +13,8 @@ import Universe.CosmicPartition
 |||   - Dark Matter: ~27%
 |||   - Visible Matter: ~5%
 |||
-||| In the deterministic Primorial architecture, these numbers are not 
-||| empirical accidents—they are mathematically mandated by the 137-Grid's 
+||| In the LUniverse model, these numbers are not 
+||| empirical accidents—they are mathematically mandated by the dynamic partition grid's 
 ||| combinatorial state limits (totaling exactly 210 states)!
 |||
 ||| The resulting mathematical proportions are:
@@ -38,10 +39,12 @@ public export
 calculateCosmicBudget : CosmicPartition -> MassEnergyBudget
 calculateCosmicBudget (MkCosmicPartition m de dm) = 
   let 
-      -- In a full type-safe implementation, we extract the list lengths
-      visibleStates = 27.0
-      darkEnergyStates = 128.0
-      darkMatterStates = 55.0
+      visibleStates : Double
+      visibleStates = cast (length m)
+      darkEnergyStates : Double
+      darkEnergyStates = cast (length de)
+      darkMatterStates : Double
+      darkMatterStates = cast (length dm)
       totalStates   = visibleStates + darkEnergyStates + darkMatterStates
       
       deRatio = darkEnergyStates / totalStates

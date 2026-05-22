@@ -13,7 +13,7 @@ import Math.IntPolynumber
 |||
 ||| As the universe unfolds, S_13 governs a critical transition phase where 
 ||| polynomials begin generating extremely large fractional denominators, which 
-||| pushes the 137-Grid to its limits, causing mass Decoherence into Dark Energy.
+||| pushes the dynamic partition grid to its limits, causing mass Decoherence into Dark Energy.
 public export
 evaluateS13 : IntPolynumber
 evaluateS13 = S13

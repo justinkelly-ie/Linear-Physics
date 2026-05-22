@@ -49,3 +49,13 @@ constructPrimorialGrid =
 public export
 flattenCosmicPartition : CosmicPartition -> List (PixelNL Integer)
 flattenCosmicPartition (MkCosmicPartition m a v) = m ++ a ++ v
+
+||| Dynamically calculates the Grid Limit (137) as an emergent property of the Cosmic Partition.
+||| It is the sum of the 128 Dark Energy states and the 9 surface states of the 3D manifest matter projection.
+public export
+calculateGridLimit : CosmicPartition -> Double
+calculateGridLimit partition =
+  let deStates : Double = cast (length partition.darkEnergy)
+      matterStates : Double = cast (length partition.visibleMatter)
+      surfaceProjection = matterStates / 3.0
+  in deStates + surfaceProjection

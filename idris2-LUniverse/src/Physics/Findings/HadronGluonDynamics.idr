@@ -6,7 +6,7 @@ import Universe.DarkPlusMatter
 
 %default total
 
-||| Hadron Gluon Dynamics in the Primorial Architecture
+||| Hadron Gluon Dynamics in the LUniverse model
 |||
 ||| In traditional Quantum Chromodynamics (QCD), a Gluon is considered a gauge 
 ||| boson that acts as the force carrier between Quarks to bind them into Hadrons.

@@ -4,8 +4,11 @@ import Universe.DarkPlusMatter
 import Math.Chromogeometry
 import Math.DenseAMSet
 import Math.MaxelNL
+import Universe.CosmicPartition
 
 %default total
+
+
 
 ||| Cosmic Expansion & Dark Energy
 |||
@@ -49,7 +52,7 @@ record DarkEnergyCluster where
 public export
 implementation ExertsExpansivePressure DarkEnergyCluster where
   calculateExpansivePressure cluster = 
-    cluster.fractionalComplexity * 137.0 -- Scaled by the Fine Structure threshold
+    cluster.fractionalComplexity * (calculateGridLimit constructPrimorialGrid) -- Scaled by the Fine Structure threshold
 
 ||| Maps a spatial dilation function over the PixelNL coordinates natively.
 ||| Because DenseAMSet is an O(N) array, we can stretch the entire universe
@@ -64,6 +67,6 @@ dilateSpace f (MkDense xs) =
 public export
 applyDarkEnergyExpansion : DarkPlusMatter -> Double -> DarkPlusMatter
 applyDarkEnergyExpansion (MkDarkPlusMatter gen poly supp flavor) pressure =
-  let scale = cast (pressure / 137.0) + 1 -- Dilation integer factor
+  let scale = cast (pressure / calculateGridLimit constructPrimorialGrid) + 1 -- Dilation integer factor
       newSupp = dilateSpace (\x => x * scale) supp
   in MkDarkPlusMatter gen poly newSupp flavor

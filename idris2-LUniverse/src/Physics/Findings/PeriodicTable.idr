@@ -13,20 +13,20 @@ import Math.DiscreteCalculus
 ||| the speed of light to remain in its orbit. Standard physics views this as a 
 ||| relativistic breakdown.
 |||
-||| In the deterministic Primorial architecture, we rely on our discrete calculus.
+||| In the LUniverse model, we rely on our discrete calculus.
 ||| An atom is an aggregate of Baryons. As you build heavier atoms, you are locally 
 ||| integrating the fractional residues of the Quarks (combining triads). This integration
-||| accumulates an absolute topological debt against the discrete 137-Grid.
+||| accumulates an absolute topological debt against the dynamic grid limit.
 ||| 
 ||| We measure this using the `leibnizIntegralLag`. When the accumulated lag
-||| exceeds the absolute maximum address space of the grid (137 coordinates), 
+||| exceeds the absolute maximum address space of the grid (defined by the partition limit), 
 ||| the grid physically runs out of memory to render the atom's internal binding.
 ||| The atom suffers a catastrophic "Decoherence" (radioactive decay or spontaneous 
 ||| fission). 
 ||| 
 ||| Element 137 is not a speed limit—it is a combinatorial storage limit!
 
-||| The absolute limit of stable chemistry on the 137-Grid.
+||| The absolute limit of stable chemistry on the grid.
 ||| Uses Fin 138 to perfectly bound atomic numbers from 0 (Vacuum) to 137.
 public export
 AtomicNumber : Type
@@ -59,7 +59,7 @@ Oxygen : Element 8
 Oxygen = MkElement 8
 
 ||| The absolute maximum element that can be resolved by the engine before 
-||| Leibniz Lag integration overflows the 137-coordinate bound.
+||| Leibniz Lag integration overflows the dynamic coordinate bound.
 public export
 Feynmanium : Element 137
 Feynmanium = MkElement 137

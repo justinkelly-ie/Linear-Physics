@@ -1,4 +1,4 @@
-module Physics.ScaleOrders.Fractal
+module Physics.Evolution.Fractal
 
 %default total
 

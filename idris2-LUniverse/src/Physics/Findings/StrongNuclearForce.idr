@@ -13,9 +13,9 @@ import Math.SpreadPolynomial
 ||| In standard particle physics, the "Strong Force" binds quarks together inside 
 ||| hadrons, mediated by the exchange of gluons.
 |||
-||| In the Primorial architecture, forces are purely structural topologies. 
+||| In the LUniverse model, forces are purely structural topologies. 
 ||| The Strong Force is not a "pulling" force—it is the structural integrity of 
-||| the 137-Grid. Ripping a quark out of the vacuum creates an irreducible 
+||| the dynamic partition grid. Ripping a quark out of the vacuum creates an irreducible 
 ||| S_5 fractional state (a Dirac Hole / topological defect).
 |||
 ||| Because an isolated fraction cannot resolve into the integer grid, its 

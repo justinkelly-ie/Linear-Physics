@@ -13,7 +13,7 @@ import Math.DenseAMSet
 ||| is no theoretical reason why a proton is exactly 1836 times heavier than 
 ||| an electron; it is simply measured and hardcoded into equations.
 |||
-||| In the Primorial Architecture, "mass" is strictly equivalent to topological 
+||| In the LUniverse model, "mass" is strictly equivalent to topological 
 ||| length (number of unresolved integer nodes acting as drag).
 ||| By mapping the electron as a baseline 1D topological knot, and the proton 
 ||| as a composite 3-quark structure bound by the S_5 and S_3 Prime Gates, we 
@@ -46,7 +46,7 @@ protonStructure : DarkPlusMatter
 protonStructure = 
   -- For mathematical simulation, we generate 1836 structural nodes 
   -- representing the exact fractal permutation limit of the 3-quark system
-  -- within the 137-Grid.
+  -- within the dynamic partition grid.
   let mockNodes = map (\i => (MkPixelNL i i, 1)) [1..1836]
   in MkDarkPlusMatter 5 emptyIntPoly (MkDense mockNodes) Matter
 

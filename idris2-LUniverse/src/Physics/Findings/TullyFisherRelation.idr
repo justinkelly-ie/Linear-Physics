@@ -5,6 +5,7 @@ import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
 import Math.SpreadPolynomial
+import Universe.CosmicPartition
 
 %default total
 
@@ -14,7 +15,7 @@ import Math.SpreadPolynomial
 ||| than the amount of visible matter permits (based on Newtonian gravity). 
 ||| To fix this, scientists inject invisible "Dark Matter Halos" into the model.
 |||
-||| In the Primorial architecture, we do not need arbitrary invisible halos!
+||| In the LUniverse model, we do not need arbitrary invisible halos!
 ||| The velocity-mass power law (Tully-Fisher) emerges natively from the 
 ||| continuous rational scaling limit of the Maxel grid. The "Dark Matter" is 
 ||| simply the 55 baseline vacuum states acting as a rigid, topological scaffold 
@@ -32,9 +33,9 @@ implementation ExhibitsGalacticRotation DarkPlusMatter where
     let visibleMass = cast (length xs)
         -- Velocity Squared is structurally proportional to the polynomial spread 
         -- minus the baseline vacuum friction (the Dark Matter ratio)
-        -- In the 137-Grid, max stable rational rotation velocity is dictated by 
-        -- the Fine Structure coupling (1/137)
-        velocitySq = (visibleMass * 137.0) / 55.0
+        -- In the dynamic grid, max stable rational rotation velocity is dictated by 
+        -- the Fine Structure coupling
+        velocitySq = (visibleMass * (calculateGridLimit constructPrimorialGrid)) / 55.0
     in (velocitySq, visibleMass)
 
 ||| A formal audit of the Tully-Fisher limit.
@@ -45,4 +46,4 @@ verifyTullyFisherLaw : DarkPlusMatter -> Bool
 verifyTullyFisherLaw state =
   let (v2, m) = calculateRotationMetrics state
   -- V^2 must be directly proportional to M scaled by the structural constants
-  in v2 >= (m * (137.0 / 55.0))
+  in v2 >= (m * ((calculateGridLimit constructPrimorialGrid) / 55.0))

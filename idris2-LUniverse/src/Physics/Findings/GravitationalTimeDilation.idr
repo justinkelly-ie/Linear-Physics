@@ -5,13 +5,14 @@ import Math.SpreadPolynomial
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
+import Universe.CosmicPartition
 
 %default total
 
 ||| Gravitational Time Dilation
 ||| 
 ||| In standard relativity, time runs slower in stronger gravitational fields.
-||| In the Primorial architecture, "Time" is merely the computational progression
+||| In the LUniverse model, "Time" is merely the computational progression
 ||| of state resolution. 
 |||
 ||| The S_7 polynomial (Time Dilation Gate) introduces extreme fractional 
@@ -36,7 +37,7 @@ implementation ExperiencesTimeDilation DarkPlusMatter where
     let unresolvableComplexity = cast (length xs)
         -- S_7 gate amplifies this lag by its polynomial degree
         gateAmplifier = if gen == 7 then 7.0 else 1.0
-    in (unresolvableComplexity * gateAmplifier) / 137.0
+    in (unresolvableComplexity * gateAmplifier) / (calculateGridLimit constructPrimorialGrid)
 
 ||| Calculates the Redshift (Z-factor) of emitted light.
 ||| High Time Dilation pushes the observed wavelength of light beyond the visible 

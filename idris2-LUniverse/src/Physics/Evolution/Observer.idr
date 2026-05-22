@@ -1,4 +1,4 @@
-module Physics.ScaleOrders.Observer
+module Physics.Evolution.Observer
 
 import Math.DiscreteCalculus
 import Universe.CosmicPartition

@@ -2,6 +2,7 @@ module Physics.Findings.DarkMatterFriction
 
 import Universe.DarkPlusMatter
 import Math.Chromogeometry
+import Universe.CosmicPartition
 
 %default total
 
@@ -11,7 +12,7 @@ import Math.Chromogeometry
 ||| presence of significantly more mass than is visibly observable. This invisible
 ||| mass is termed "Dark Matter" (comprising ~27% of the universe).
 |||
-||| In the deterministic Primorial architecture, Dark Matter corresponds to the
+||| In the LUniverse model, Dark Matter corresponds to the
 ||| exactly 55 states of the Maxwell Background Vacuum (which is 26.2% of the
 ||| 210-state pool).
 |||
@@ -42,4 +43,4 @@ public export
 implementation ExertsGravitationalDrag DarkMatterGrid where
   calculateTensionDrag grid = 
     -- The drag is directly proportional to the density of the 55-state vacuum.
-    grid.gridDensity * 137.0 -- Scaled by the Fine Structure threshold
+    grid.gridDensity * (calculateGridLimit constructPrimorialGrid) -- Scaled by the dynamic grid limit derived from the partition state

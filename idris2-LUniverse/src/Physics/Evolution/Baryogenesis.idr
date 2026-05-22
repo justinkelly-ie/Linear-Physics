@@ -1,7 +1,7 @@
-module Physics.Epochs.Baryogenesis
+module Physics.Evolution.Baryogenesis
 
 import Math.SpreadPolynomial
-import Physics.Epochs.Core
+import Physics.Evolution.Transition
 
 %default total
 
@@ -35,7 +35,7 @@ data BaryonGenesis : Type where
 
 ||| Evaluates the state overflow during Epoch 2 without consuming it.
 public export
-evaluateEpoch2 : {a : Type} -> {label : a} -> (0 _ : Epoch 2 a label) -> BaryonGenesis
+evaluateEpoch2 : {a : Type} -> {label : a} -> (0 _ : Phase False 2 a label) -> BaryonGenesis
 evaluateEpoch2 _ = 
   -- In a full implementation, we extract the lengths of the lists in the state partition.
   -- Here we formally assert the mathematical necessity of the 128/27 split.
