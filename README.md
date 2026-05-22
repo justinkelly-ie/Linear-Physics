@@ -41,8 +41,11 @@ The geometry is governed by Chromogeometry's three interlocked metrics:
 *   **Red Metric (Dark Energy/Radiation):** The relativistic $x^2 - y^2$ geometry where photons and other energetic particles propagate along null-quadrance bounds invisble to us.
 *   **Green Metric (Background/Tension):** The $2xy$ geometry that traps unresolvable fractional states, generating topological tension (e.g., Color Confinement).
 
+### Fractal Spread Polynomial Composition ###
+From the base layer up, spread polynomials compose fractally. If a new substrate is available, the mathematics can continue. If not, the mathematics collapses. The substrate must have properties that can support the same spread polynomial structure.
+
 ### 2. The Spread Polynomial Primorial Quantum Gates
-Particles are modeled as identical base data structures filtered through specific prime-number spread polynomial gates:
+The spread polynomial structure is visible in the particle relm. Particles are modeled as identical base data structures filtered through specific prime-number spread polynomial gates:
 *   **$n=1$ (Absolute Vacuum):** Neutrinos passing flawlessly through the substrate.
 *   **$n=3$ (Matter Gate):** Electrons forming stable topological knots.
 *   **$n=5$ (Charge Gate):** Quarks forming fractional matrices that must bond in triads (Baryons) to mathematically clear their fractional denominators.
