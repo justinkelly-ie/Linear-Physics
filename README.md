@@ -1,4 +1,4 @@
-# Idris2 Linear Universe (LUniverse)
+# Idris2 Linear Universe (LUniverse) [^1]
 
 **A deterministic, discrete-geometry physics engine where the laws of nature are enforced at compile-time.**
 
