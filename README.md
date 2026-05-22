@@ -30,8 +30,7 @@ Whether it is a subatomic quantum scattering event or the cellular division of a
 
 ### 1. The Grid and Chromogeometry
 Space is modeled as 3 discrete multisets. 
-
-Within the `DarkPlusMatter` architecture, the universe's coordinate space is structurally bounded by the 210 states of the 4th Primorial manifold ($2 \times 3 \times 5 \times 7 = 210$). Crucially, these values are **not hardcoded constants**. They emerge natively and dynamically from the combinatorial mathematics of the engine, partitioning the 210 computational "maxels" into:
+The universe's coordinate space is structurally bounded by the 210 states of the 4th Primorial manifold ($2 \times 3 \times 5 \times 7 = 210$). Crucially, these values are **not hardcoded constants**. They emerge natively and dynamically from the combinatorial mathematics of the engine, partitioning the 210 computational "maxels" into:
 * **27 Maxels (Visible Matter):** Resolvable $3^3$ integer states that successfully collapse into stable geometric projections.
 * **128 Maxels (Dark Energy):** Unresolvable $2^7$ fractional states that remain spread across the grid, exerting expansional topological pressure.
 * **55 Maxels (Dark Matter):** The mathematically emergent residue ($210 - (128 + 27) = 55$) that acts as a latent gravitational halo.
