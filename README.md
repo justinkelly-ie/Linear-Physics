@@ -12,7 +12,7 @@ Modern physics is plagued by infinities. Continuous wave equations, singularitie
 
 **Linear Physics** dispenses with that. Here we construct the **Linear Universe**, which attempts to provide a rational, algebraic and geometric explanation for the observed evidence.
 
-Built on [Norman Wildberger's](https://njwildberger.com/) Finitist Mathematics including Box Aritmetic (Multisets), Chromogeometry and Spread Polynomials, this project models the universe as a discrete, combinatorial engine. In the Linear Universe, continuous fields are unnecessary, particles are simply geometric and algebraic constraints, acting on a discrete integer pixel grid.
+Built on [Norman Wildberger's](https://njwildberger.com/) Finitist Mathematics including Box Aritmetic (Multisets), Chromogeometry and Spread Polynomials, this project models the universe as a discrete, combinatorial engine. In the Linear Universe, continuous fields are unnecessary, particles are moddeled simply as geometric and algebraic constraints, acting on a discrete integer pixel grid.
 
 ### Why "Linear"?
 This project is written in **[Idris 2](https://github.com/idris-lang/Idris2)** to leverage its **Quantitative Type Theory (QTT)** and **Linear Types**. In QTT, a linear resource must be consumed *exactly once*. We use this compiler-level constraint to natively enforce absolute physical laws:
