@@ -1,4 +1,4 @@
-# Idris2 Linear Universe (LUniverse)
+# Idris2 Linear Physics
 
 **A deterministic, discrete-geometry physics engine where the laws of nature are enforced at compile-time.**
 
@@ -10,7 +10,7 @@
 ## Significance
 Modern physics is plagued by infinities. Continuous wave equations, singularities, arbitrary constants, and abstract parameters like "gluons" or "virtual particles" dominate the Standard Model. 
 
-**LUniverse** (Linear Universe) dispenses with that. 
+**Linear Physics** dispenses with that. Here we construct a Linear Universe **LUniverse** (Linear Universe) that provides an improved model over the standard model of physics. 
 
 Built on [Norman Wildberger's](https://njwildberger.com/) Finitist Mathematics and Rational Chromogeometry, this project models the universe as a discrete, combinatorial engine. In LUniverse, continuous fields are illusions; particles are simply algebraic constraints (Spread Polynomials) acting upon a discrete integer pixel grid (an indivisible, linear computational substrate).
 
