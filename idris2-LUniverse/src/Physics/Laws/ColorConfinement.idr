@@ -1,5 +1,7 @@
 module Physics.Laws.ColorConfinement
 
+import Data.Linear
+
 %default total
 
 ||| The Color Confined Interface
@@ -12,4 +14,4 @@ public export
 interface ColorConfined a where
   ||| Computes if the given composite shape mathematically satisfies the 
   ||| geometric stability lock.
-  isColorless : a -> Bool
+  isColorless : (1 _ : a) -> LPair Bool a

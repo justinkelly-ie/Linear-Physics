@@ -2,7 +2,7 @@ module Physics.Evolution.Life
 
 import Physics.Evolution.Transition
 import Physics.Evolution.Observer
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.Maxel
 import Math.Multiset
 

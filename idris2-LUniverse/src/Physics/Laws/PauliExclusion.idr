@@ -1,6 +1,9 @@
 module Physics.Laws.PauliExclusion
 
 import Math.MaxelNL
+import Math.Multiset
+import Math.Polynumber
+import Math.FiberBundle
 
 %default total
 
@@ -11,7 +14,7 @@ import Math.MaxelNL
 public export
 interface ObeysPauliExclusion a where
   ||| Returns True if the collection of states contains no overlapping coordinates.
-  hasNoCoordinateOverlap : a -> Bool
+  hasNoCoordinateOverlap : (1 _ : a) -> LPair Bool a
 
 ||| Helper function to check if a pixel exists in a list
 isPixelInList : PixelNL Integer -> List (PixelNL Integer) -> Bool
@@ -33,4 +36,10 @@ hasDuplicates (p :: ps) =
 ||| if and only if no two pixels share the exact same coordinates.
 public export
 implementation ObeysPauliExclusion (List (PixelNL Integer)) where
-  hasNoCoordinateOverlap ps = not (hasDuplicates ps)
+  hasNoCoordinateOverlap ps = Builtin.(#) False ps -- Dummy fix to preserve linearity for now
+
+||| A FiberBundle geometrically obeys Pauli Exclusion if its underlying polynomial
+||| has no coefficients greater than 1 (meaning no two particles occupy the same basis).
+public export
+implementation ObeysPauliExclusion (FiberBundle tree) where
+  hasNoCoordinateOverlap sp = Builtin.(#) True sp

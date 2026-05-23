@@ -1,8 +1,12 @@
 module Physics.Evolution.Cosmology
 
 import Physics.Evolution.Transition
+import Math.FiberBundle
+import Physics.Findings.CosmicPartition
 
 %default total
+
+export infixr 8 ^
 
 ||| Epoch 38: The Eddington Limit and The Observable Universe
 |||
@@ -28,9 +32,9 @@ import Physics.Evolution.Transition
 
 ||| Computes integer powers without overflowing to infinity natively.
 public export
-pow137 : Nat -> Integer
-pow137 Z = 1
-pow137 (S k) = 137 * pow137 k
+(^) : Integer -> Nat -> Integer
+_ ^ Z = 1
+x ^ (S k) = x * (x ^ k)
 
 ||| The Formal Proof that the 38th cycle yields the Eddington Limit.
 public export
@@ -42,8 +46,11 @@ record CosmologicalScale where
 
 ||| Evaluates the scale of an Epoch without physically consuming it.
 public export
-evaluateScale : {n : Nat} -> {a : Type} -> {label : a} -> (0 _ : Phase False n a label) -> CosmologicalScale
-evaluateScale {n} _ = MkCosmologicalScale n (pow137 n)
+evaluateScale : {tree : SpacetimeManifold} -> (0 _ : FiberBundle tree) -> CosmologicalScale
+evaluateScale {tree} _ = 
+  let n = getDepth tree 
+      dynamicGridLimit = cast {to=Integer} (calculateGridLimit constructPrimorialGrid)
+  in MkCosmologicalScale n (dynamicGridLimit ^ n)
 
 ||| A static check that Epoch 38 yields the empirical Eddington limit.
 public export

@@ -1,7 +1,7 @@
 module Physics.Particles.WeakBoson
 
-import Universe.DarkPlusMatter
-import Physics.QuantumGates
+import Math.FiberBundle
+import Math.Polynumber
 
 %default total
 
@@ -17,8 +17,8 @@ import Physics.QuantumGates
 ||| the state to mathematically split into a Quark (n=5), a Bond (n=4), 
 ||| and a Lepton (n=2), simulating beta decay.
 public export
-record WeakBoson where
+record WeakBoson tree where
   constructor MkWeakBoson
-  state : DarkPlusMatter
+  1 state : FiberBundle tree
   ||| The weak boson corresponds to the Weak Force gate.
-  0 isWeakForce : isWeakForceGate state = True
+  0 isWeakForce : dimensions (getGeometry tree) = 11

@@ -1,10 +1,13 @@
 module Physics.Findings.DarkEnergyExpansion
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.Chromogeometry
 import Math.DenseAMSet
 import Math.MaxelNL
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
+
+import Physics.Findings.CosmicPartition
+import Math.Fraction
 
 %default total
 
@@ -38,7 +41,7 @@ interface ExertsExpansivePressure a where
   ||| Computes the expansive outward tension applied to the visible grid.
   ||| The more complex the fractional denominators in the state space, 
   ||| the higher the expansive coefficient.
-  calculateExpansivePressure : a -> Double
+  calculateExpansivePressure : a -> Spread
 
 ||| A dummy representation of a Dark Energy Fractional Cluster
 public export
@@ -46,13 +49,13 @@ record DarkEnergyCluster where
   constructor MkDarkEnergyCluster
   states : List DarkPlusMatter
   -- A measure of how deeply nested the fractional denominators are
-  fractionalComplexity : Double
+  fractionalComplexity : Spread
 
 ||| Dark Energy pushes the visible universe apart due to fractional overflow.
 public export
 implementation ExertsExpansivePressure DarkEnergyCluster where
   calculateExpansivePressure cluster = 
-    cluster.fractionalComplexity * (calculateGridLimit constructPrimorialGrid) -- Scaled by the Fine Structure threshold
+    scaleFraction primordialGridStates cluster.fractionalComplexity -- Scaled by the Fine Structure threshold
 
 ||| Maps a spatial dilation function over the PixelNL coordinates natively.
 ||| Because DenseAMSet is an O(N) array, we can stretch the entire universe
@@ -65,8 +68,10 @@ dilateSpace f (MkDense xs) =
 ||| Applies the physical outward pressure to the underlying DarkPlusMatter lattice,
 ||| physically moving the coordinates apart (simulating Cosmic Expansion).
 public export
-applyDarkEnergyExpansion : DarkPlusMatter -> Double -> DarkPlusMatter
-applyDarkEnergyExpansion (MkDarkPlusMatter gen poly supp flavor) pressure =
-  let scale = cast (pressure / calculateGridLimit constructPrimorialGrid) + 1 -- Dilation integer factor
-      newSupp = dilateSpace (\x => x * scale) supp
-  in MkDarkPlusMatter gen poly newSupp flavor
+applyDarkEnergyExpansion : DarkPlusMatter -> Spread -> DarkPlusMatter
+applyDarkEnergyExpansion (MkDarkPlusMatter gen statePoly supp flavor) pressure =
+  -- Recover the raw fractional complexity by dividing out the primordialGridStates scaling
+  -- Actually, the physical scale integer is derived directly from the fraction
+  let scale = fractionDivNat pressure.numerator (pressure.denominator * primordialGridStates) + 1
+      newSupp = dilateSpace (\x => x * (cast {to=Integer} scale)) supp
+  in MkDarkPlusMatter gen statePoly newSupp flavor

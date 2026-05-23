@@ -1,9 +1,10 @@
 module Physics.Particles.Photon
 
 import Math.MaxelNL
+import Math.Polynumber
 import Math.Chromogeometry
-import Universe.DarkPlusMatter
 import Math.SpreadPolynomial
+import Math.Fraction
 
 %default total
 
@@ -50,6 +51,8 @@ absorbPhoton (MkPhoton (MkPixelNL x y)) = MkPixelNL (x + y) (x - y)
 ||| to Computational Generation (Time), we derive the exact velocity.
 ||| Because Red Quadrance (x^2 - y^2) is 0 for Photons, this will always return 1 or -1.
 public export
-propagationSpeed : Photon -> Double
+propagationSpeed : Photon -> Fraction
 propagationSpeed (MkPhoton (MkPixelNL space time)) =
-  if time == 0 then 0.0 else cast space / cast time
+  let spaceNat = cast {to=Nat} (abs space)
+      timeNat = cast {to=Nat} (abs time)
+  in MkFraction spaceNat timeNat

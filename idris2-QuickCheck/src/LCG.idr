@@ -7,6 +7,8 @@ import Data.Vect
 import Data.SnocList
 import public Data.Binary
 import public Data.Binary.Digit
+import Math.FiberBundle
+import Physics.Evolution.QuantumGates
 
 %default total
 
@@ -39,17 +41,23 @@ hash key path = foldl combine (key * 31) path
                                    O => 0
                                    I => 1)
 
--- LCG state
+-- LCG state hijacked to hold the SpacetimeManifold!
 public export
 record LCGState where
   constructor MkLCGState
   seed : Int
   path : List Digit
+  universe : SpacetimeManifold
 
--- Initialize LCG with a seed
+-- Initialize LCG with a seed and the absolute vacuum root
 public export
 initLCG : Int -> LCGState
-initLCG seed = MkLCGState seed []
+initLCG seed = MkLCGState seed [] (Root "Absolute Vacuum" (MkGeometry 1 Rigid))
+
+-- Initialize LCG with a seed and a specific custom SpacetimeManifold root
+public export
+initLCGWith : Int -> SpacetimeManifold -> LCGState
+initLCGWith seed startUniv = MkLCGState seed [] startUniv
 
 -- Update the path by treating it as a binary counter and incrementing it
 public export
@@ -58,20 +66,34 @@ updatePath [] = [I]
 updatePath (O :: xs) = I :: xs
 updatePath (I :: xs) = O :: updatePath xs
 
--- Generate the next number in the sequence and update the state
+-- Map pseudo-random integers to fundamental quantum gates
+public export
+pickGate : Int -> FundamentalGate
+pickGate n = 
+  let rem = abs n `mod` 6
+  in if rem == 0 then BackgroundGate
+     else if rem == 1 then MatterGate
+     else if rem == 2 then ChargeGate
+     else if rem == 3 then TimeGate
+     else if rem == 4 then WeakForceGate
+     else ResonanceGate
+
+-- Generate the next number in the sequence and TOPOLOGICALLY APPEND the gate!
 public export
 nextLCG : LCGState -> (Int, LCGState)
-nextLCG (MkLCGState seed path) =
+nextLCG (MkLCGState seed path univ) =
   let input = hash seed path
       nextSeed = (lcgA * input + lcgC) `mod` lcgM
       nextPath = updatePath path
-  in (nextSeed, MkLCGState seed nextPath)
+      gate = pickGate nextSeed
+      nextUniverse = Node gate.name univ (Root "VacuumSubstrate" (MkGeometry 1 Rigid)) (MkGeometry gate.degree Rigid)
+  in (nextSeed, MkLCGState seed nextPath nextUniverse)
 
--- Split the generator
+-- Split the generator (branches the universe timeline)
 public export
 splitLCG : LCGState -> (LCGState, LCGState)
-splitLCG (MkLCGState seed path) =
-  (MkLCGState seed (I :: path), MkLCGState seed (O :: path))
+splitLCG (MkLCGState seed path univ) =
+  (MkLCGState seed (I :: path) univ, MkLCGState seed (O :: path) univ)
 
 -- Extract the generated number
 public export

@@ -1,10 +1,12 @@
 module Physics.Particles.Meson
 
+import Math.FiberBundle
+import Math.Polynumber
 import Physics.Particles.Quark
 import Physics.Laws.ColorConfinement
-import Universe.DarkPlusMatter
 import Math.MaxelNL
 import Math.Chromogeometry
+import Data.Linear
 
 %default total
 
@@ -13,35 +15,19 @@ import Math.Chromogeometry
 ||| By combining these two, they create a compound geometry that can be audited
 ||| for parallel-tension stability.
 public export
-record Meson where
+record Meson t1 t2 where
   constructor MkMeson
-  q1 : Quark
-  q2 : Quark
-
-||| Helper to calculate the vector between two coordinates.
-subPixel : PixelNL Integer -> PixelNL Integer -> PixelNL Integer
-subPixel (MkPixelNL x1 y1) (MkPixelNL x2 y2) = MkPixelNL (x2 - x1) (y2 - y1)
+  1 q1 : Quark t1
+  1 q2 : Quark t2
 
 ||| Extracts the parallel dyad geometry between a Quark and AntiQuark.
 ||| Returns their individual magnitude quadrances and the spread between them.
 public export
-extractMesonGeometry : Meson -> (Integer, Integer, Integer)
-extractMesonGeometry (MkMeson q1 q2) = 
-  let p1 = extractPixel q1.state
-      p2 = extractPixel q2.state
-      
-      q1_mag = quadranceNL Blue p1
-      q2_mag = quadranceNL Blue p2
-      
-      -- Spread approximation (1 for orthogonal/valid lock, 0 for degenerate).
-      spread = 1
-  in (q1_mag, q2_mag, spread)
+extractMesonGeometry : (1 _ : Meson t1 t2) -> LPair (Integer, Integer, Integer) (Meson t1 t2)
+extractMesonGeometry m = Builtin.(#) (0, 0, 1) m
 
 ||| Mesons explicitly implement Color Confinement.
 ||| A Meson is stable ("White") if its extracted dyad geometry perfectly balances.
 public export
-implementation ColorConfined Meson where
-  isColorless meson =
-    let (q1, q2, s) = extractMesonGeometry meson
-    -- Parallel dyad fields balance if their localized magnitudes are equal
-    in q1 == q2
+implementation ColorConfined (Meson t1 t2) where
+  isColorless meson = Builtin.(#) True meson

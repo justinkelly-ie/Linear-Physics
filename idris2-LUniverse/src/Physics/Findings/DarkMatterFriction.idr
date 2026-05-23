@@ -1,8 +1,11 @@
 module Physics.Findings.DarkMatterFriction
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.Chromogeometry
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
+
+import Physics.Findings.CosmicPartition
+import Math.Fraction
 
 %default total
 
@@ -28,19 +31,20 @@ import Universe.CosmicPartition
 
 public export
 interface ExertsGravitationalDrag a where
-  ||| Computes the invisible geometric tension applied to the visible grid.
-  calculateTensionDrag : a -> Double
+  ||| Computes the inertial resistance applied by the Dark Matter grid tension.
+  calculateTensionDrag : a -> Spread
 
 ||| A dummy representation of a Dark Matter Background Array
 public export
 record DarkMatterGrid where
   constructor MkDarkMatterGrid
   states : List DarkPlusMatter
-  gridDensity : Double
+  -- Represents the physical density of the grid bounds
+  gridDensity : Spread
 
 ||| Dark Matter structurally anchors the visible universe.
 public export
 implementation ExertsGravitationalDrag DarkMatterGrid where
   calculateTensionDrag grid = 
     -- The drag is directly proportional to the density of the 55-state vacuum.
-    grid.gridDensity * (calculateGridLimit constructPrimorialGrid) -- Scaled by the dynamic grid limit derived from the partition state
+    scaleFraction primordialGridStates grid.gridDensity -- Scaled by the dynamic grid limit derived from the partition state

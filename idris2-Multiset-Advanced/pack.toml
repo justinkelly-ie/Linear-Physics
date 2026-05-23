@@ -6,7 +6,7 @@ test = "idris2-Multiset-Advanced-tests/idris2-Multiset-Advanced-test.ipkg"
 
 [custom.all.idris2-ref1]
 type = "local"
-path = "../Library/Src/idris2-ref1"
+path = "../../Library/Src/idris2-ref1"
 ipkg = "ref1.ipkg"
 
 [custom.all.idris2-QuickCheck]

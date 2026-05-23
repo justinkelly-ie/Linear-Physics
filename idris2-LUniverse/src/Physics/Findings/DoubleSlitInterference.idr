@@ -1,8 +1,12 @@
 module Physics.Findings.DoubleSlitInterference
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.SpreadPolynomial
-import Physics.QuantumGates
+import Math.MaxelNL
+import Math.Fraction
+import Math.FractionalEvaluator
+import Math.IntPolynumber
+import Math.FractionalEvaluator
 
 %default total
 
@@ -41,7 +45,7 @@ interface DoubleSlitProjector a where
   ||| Evaluates if a given fractional spread will clear its denominator 
   ||| and hit the detector (Bright Fringe) or remain hidden (Dark Fringe).
   ||| Returns True for Bright, False for Dark.
-  projectsToBrightFringe : (input_spread : Double) -> a -> Bool
+  projectsToBrightFringe : (input_spread : Spread) -> a -> Bool
 
 ||| A simplified mock structure for the Slit Geometry
 public export
@@ -49,22 +53,20 @@ record SlitGeometry where
   constructor MkSlitGeometry
   gateDegree : Nat -- The tuning n value of the geometry
 
-||| A mock numerical evaluation of a spread polynomial for a given spread value.
-||| In full implementation, this uses the Rational math engine.
-public export
-evaluatePolynomial : Nat -> Double -> Double
-evaluatePolynomial 2 s = 4.0 * s * (1.0 - s)
-evaluatePolynomial n s = s -- default passthrough for mock
 
 ||| In this model, if the polynomial evaluation results in a mathematically 
 ||| whole number (no fractional remainder), the particle appears on the screen.
+isDivisible : Nat -> Nat -> Bool
+isDivisible Z _ = True
+isDivisible _ Z = False
+isDivisible n d = 
+  case n `minus` d of
+       Z => (n == d) -- If minus reached zero, it must be exact match
+       diff => isDivisible (assert_smaller n diff) d
+
 public export
 implementation DoubleSlitProjector SlitGeometry where
-  projectsToBrightFringe s (MkSlitGeometry n) = 
-    -- The particle's state is evaluated by the polynomial operator
-    let output = evaluatePolynomial n s
-    -- If the absolute difference between the output and its floor is 0,
-    -- it is a pure integer, meaning it safely materializes on the detector.
-    in (output - cast (cast {to=Integer} output)) == 0.0
-
-
+  projectsToBrightFringe spread geom =
+    let algebraicPoly = spreadPoly geom.gateDegree
+        polyResult = evaluateIntPoly algebraicPoly spread
+    in polyResult.denominator == 1 || isDivisible polyResult.numerator polyResult.denominator

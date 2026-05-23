@@ -4,7 +4,7 @@
 module Main
 
 import Hedgehog
-import Universe.DarkPlusMatter
+import Physics.FiberBundle
 import Math.MaxelNL
 import Math.AMSet
 import Math.DenseAMSet
@@ -32,7 +32,7 @@ prop_unfold_gen13 = property $ do
 
 main : IO ()
 main = do
-  success <- checkGroup $ MkGroup "Universe.DarkPlusMatter"
+  success <- checkGroup $ MkGroup "Physics.FiberBundle"
     [ ("Unfolding correctly advances polynomial", prop_unfold_advances_poly)
     , ("Unfolding resolves Generation 11 instantly", prop_unfold_gen11)
     , ("Unfolding resolves Generation 13 instantly", prop_unfold_gen13)

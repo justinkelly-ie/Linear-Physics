@@ -6,14 +6,19 @@ module Main
 import Hedgehog
 import Physics.Evolution.Baryogenesis
 import Physics.Evolution.Transition
+import Physics.FiberBundle
+import Math.Multiset
+import Math.Polynumber
 
 %default covering
 
 prop_baryogenesis_128_27 : Property
 prop_baryogenesis_128_27 = property $ do
-  -- The dummy proof `evaluateEpoch2` returns the 128/27 split
-  -- It requires a dummy Phase, we can skip the exact dummy and just check MkBaryonGenesis 
-  let (MkBaryonGenesis dark visible) = MkBaryonGenesis 128 27
+  -- We test the actual Unified StatePhase architecture by passing a dummy root phase
+  -- through evaluateEpoch2. Since evaluateEpoch2 accepts a 0-erased StatePhase, 
+  -- it mathematically asserts the truth without consuming the state resource!
+  let dummyPhase = MkRootPhase {label="Epoch2"} {geom=MkGeometry 2 Rigid} (emptyPoly {geom=MkGeometry 2 Rigid})
+  let (MkBaryonGenesis dark visible) = evaluateEpoch2 dummyPhase
   dark === 128
   visible === 27
 

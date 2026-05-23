@@ -2,6 +2,7 @@ module Physics.Evolution.HolographicFreeze
 
 import Physics.Evolution.Transition
 import Physics.Evolution.Baryogenesis
+import Math.FiberBundle
 
 %default total
 
@@ -27,7 +28,7 @@ record DimensionFreeze where
 
 ||| Evaluates Epoch 3, proving that the universe structurally freezes into 3D.
 public export
-evaluateEpoch3 : {a : Type} -> {label : a} -> (0 _ : Phase False 3 a label) -> DimensionFreeze
+evaluateEpoch3 : {tree : SpacetimeManifold} -> (0 _ : FiberBundle tree) -> DimensionFreeze
 evaluateEpoch3 _ = 
   -- The 27 baryonic states from Epoch 2 force a 3D geometry (3x3x3).
   -- The interaction between the 2D Dark Energy substrate and this 3D manifest

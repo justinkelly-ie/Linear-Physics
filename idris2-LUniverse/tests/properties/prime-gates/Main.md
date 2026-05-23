@@ -4,7 +4,7 @@
 module Main
 
 import Hedgehog
-import Universe.DarkPlusMatter
+import Physics.FiberBundle
 import Physics.QuantumGates
 import Math.MaxelNL
 import Math.AMSet
@@ -48,7 +48,7 @@ prop_prime_gates = withTests 1 $ property $ do
 
 main : IO ()
 main = do
-  success <- checkGroup $ MkGroup "Universe.DarkPlusMatter"
+  success <- checkGroup $ MkGroup "Physics.FiberBundle"
     [ ("Prime gates are correctly identified", prop_prime_gates)
     ]
   if success then putStrLn "SUCCESS" else putStrLn "FAILURE"

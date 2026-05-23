@@ -1,7 +1,7 @@
 module Physics.Evolution.Observer
 
 import Math.DiscreteCalculus
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
 import Math.MaxelNL
 
 %default total

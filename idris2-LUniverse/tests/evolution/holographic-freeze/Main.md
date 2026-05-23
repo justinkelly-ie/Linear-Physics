@@ -6,12 +6,16 @@ module Main
 import Hedgehog
 import Physics.Evolution.HolographicFreeze
 import Physics.Evolution.Transition
+import Physics.FiberBundle
+import Math.Multiset
+import Math.Polynumber
 
 %default covering
 
 prop_dimension_freeze : Property
 prop_dimension_freeze = property $ do
-  let (MkDimensionFreeze dims holo) = MkDimensionFreeze 3 True
+  let dummyPhase = MkRootPhase {label="Epoch3"} {geom=MkGeometry 3 Rigid} (emptyPoly {geom=MkGeometry 3 Rigid})
+  let (MkDimensionFreeze dims holo) = evaluateEpoch3 dummyPhase
   dims === 3
   assert holo
 

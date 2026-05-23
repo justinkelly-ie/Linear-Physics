@@ -1,0 +1,8 @@
+package Linear-Physics
+version = 0.1.0
+executable = luniverse
+main = Main
+
+depends = base, contrib, idris2-LUniverse
+
+sourcedir = "src"

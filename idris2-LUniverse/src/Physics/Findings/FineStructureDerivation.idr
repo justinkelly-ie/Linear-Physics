@@ -1,11 +1,14 @@
 module Physics.Findings.FineStructureDerivation
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
 import Physics.Findings.GravitationalTimeDilation
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
+
+import Physics.Findings.CosmicPartition
+import Math.Fraction
 
 %default total
 
@@ -23,18 +26,21 @@ import Universe.CosmicPartition
 ||| Derives the local running Fine Structure Constant based on the topological 
 ||| lag of a given DarkPlusMatter state.
 public export
-deriveRunningAlpha : DarkPlusMatter -> Double
+deriveRunningAlpha : DarkPlusMatter -> Fraction
 deriveRunningAlpha state =
   let 
-      -- The base saturation limit of the combinatorial grid
-      baseLimit = calculateGridLimit constructPrimorialGrid
+      -- The base saturation limit of the combinatorial grid (210/1)
+      baseLimit = MkFraction primordialGridStates 1 
       
       -- We extract the local structural lag (how far the grid is stretching)
       lag = calculateLeibnizLag state
       
+      -- Add base limit to lag
+      effectiveScale = addFraction baseLimit lag
+  in 
       -- Alpha is literally the inverse of the saturated metric + accumulated tension
-      effectiveScale = baseLimit + lag
-  in 1.0 / effectiveScale
+      -- So we just flip the numerator and denominator of the effective scale!
+      MkFraction effectiveScale.denominator effectiveScale.numerator
 
 ||| Validates that the Fine Structure limit asymptotically approaches 1/137 
 ||| for empty, primordial vacuum space.
@@ -42,7 +48,8 @@ public export
 verifyPrimordialAlpha : DarkPlusMatter -> Bool
 verifyPrimordialAlpha state@(MkDarkPlusMatter gen _ (MkDense xs) _) =
   let alpha = deriveRunningAlpha state
-      gridLimit = calculateGridLimit constructPrimorialGrid
+      -- For empty space, Alpha should exactly equal 1 / 210
+      primordialAlpha = MkFraction 1 primordialGridStates
   in if length xs == 0 
-       then alpha == (1.0 / gridLimit) 
-       else alpha < (1.0 / gridLimit)
+       then (alpha.numerator * primordialAlpha.denominator) == (alpha.denominator * primordialAlpha.numerator)
+       else (alpha.numerator * primordialAlpha.denominator) < (alpha.denominator * primordialAlpha.numerator)

@@ -1,4 +1,0 @@
-package polynumber-basic-test
-depends = base, idris2-polynumber
-executable = test
-main = Main

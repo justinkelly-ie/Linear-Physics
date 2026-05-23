@@ -1,6 +1,6 @@
 module Physics.Findings.StrongNuclearForce
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
@@ -43,12 +43,12 @@ containsDiracHole (MkDarkPlusMatter gen poly (MkDense xs) flavor) =
 ||| by injecting an inverse DenseAMSet array.
 public export
 vacuumAnnihilation : DarkPlusMatter -> DarkPlusMatter
-vacuumAnnihilation state@(MkDarkPlusMatter gen poly supp flavor) =
+vacuumAnnihilation state@(MkDarkPlusMatter gen statePoly supp flavor) =
   if containsDiracHole state then
     -- The grid invokes the inverse array, physically pulling the quark back 
     -- into the vacuum to restore structural zero.
     let inverseSupp = negateDense supp
         restoredSupp = annihilateDense (addDense supp inverseSupp)
-    in MkDarkPlusMatter gen poly restoredSupp flavor
+    in MkDarkPlusMatter gen statePoly restoredSupp flavor
   else
     state

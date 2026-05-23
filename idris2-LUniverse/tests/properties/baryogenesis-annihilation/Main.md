@@ -6,7 +6,7 @@ We verify that the `DarkPlusMatter` state implicitly resolves matter/antimatter 
 module Main
 
 import Hedgehog
-import Universe.DarkPlusMatter
+import Physics.FiberBundle
 import Math.AMSet
 import Math.DenseAMSet
 import Math.MaxelNL

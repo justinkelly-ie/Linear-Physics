@@ -15,7 +15,7 @@ correct mathematical derivation yields ~61%: the 7% discrepancy is hidden visibl
 module Main
 
 import Hedgehog
-import Universe.CosmicPartition
+import Physics.Findings.CosmicPartition
 import Physics.Findings.CosmicEnergyBudget
 
 %default covering

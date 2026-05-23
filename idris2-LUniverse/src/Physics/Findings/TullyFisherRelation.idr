@@ -1,12 +1,14 @@
 module Physics.Findings.TullyFisherRelation
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
 import Math.SpreadPolynomial
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
+import Math.Fraction
 
+import Physics.Findings.CosmicPartition
 %default total
 
 ||| The Tully-Fisher Relation (Galactic Rotation Curves)
@@ -23,20 +25,20 @@ import Universe.CosmicPartition
 
 public export
 interface ExhibitsGalacticRotation a where
-  ||| Returns a tuple: (Velocity Squared, Visible Mass Equivalent)
-  calculateRotationMetrics : a -> (Double, Double)
+  ||| Returns a tuple: (Velocity Squared (Quadrance), Visible Mass Equivalent)
+  calculateRotationMetrics : a -> (Quadrance, Fraction)
 
 public export
 implementation ExhibitsGalacticRotation DarkPlusMatter where
   calculateRotationMetrics (MkDarkPlusMatter gen poly (MkDense xs) flavor) =
     -- Visible Mass Equivalent is proportional to the number of non-zero nodes
-    let visibleMass = cast (length xs)
+    let visibleMass = length xs
         -- Velocity Squared is structurally proportional to the polynomial spread 
         -- minus the baseline vacuum friction (the Dark Matter ratio)
         -- In the dynamic grid, max stable rational rotation velocity is dictated by 
         -- the Fine Structure coupling
-        velocitySq = (visibleMass * (calculateGridLimit constructPrimorialGrid)) / 55.0
-    in (velocitySq, visibleMass)
+        velocitySq = MkFraction (visibleMass * primordialGridStates) darkMatterStates -- total primorial partition states
+    in (velocitySq, MkFraction visibleMass 1)
 
 ||| A formal audit of the Tully-Fisher limit.
 ||| Proves that the flat rotation curve of the galaxy is mathematically anchored
@@ -45,5 +47,6 @@ public export
 verifyTullyFisherLaw : DarkPlusMatter -> Bool
 verifyTullyFisherLaw state =
   let (v2, m) = calculateRotationMetrics state
-  -- V^2 must be directly proportional to M scaled by the structural constants
-  in v2 >= (m * ((calculateGridLimit constructPrimorialGrid) / 55.0))
+      -- V^2 must be directly proportional to M scaled by the structural constants
+      thresholdSq = MkFraction (m.numerator * primordialGridStates) (m.denominator * darkMatterStates)
+  in (v2.numerator * thresholdSq.denominator) >= (thresholdSq.numerator * v2.denominator)

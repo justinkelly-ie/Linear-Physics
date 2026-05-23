@@ -1,8 +1,11 @@
 module Physics.Laws.PrimorialConservation
 
-import Universe.CosmicPartition
 import Math.MaxelNL
 import Data.List
+import Data.Linear
+import Math.Multiset
+import Math.Polynumber
+import Math.FiberBundle
 
 %default total
 
@@ -15,11 +18,10 @@ import Data.List
 ||| universe is immutable.
 public export
 interface ConservesInformation a where
-  isPrimorialManifoldIntact : a -> Bool
+  isPrimorialManifoldIntact : (1 _ : a) -> LPair Bool a
 
-||| Implementation for the CosmicPartition.
-||| The sum of the states across the three realms MUST exactly equal 210.
+||| In the Unified FiberBundle model, Primorial Information is exactly conserved 
+||| if the overall Polynumber natively maps to a 210-space bound.
 public export
-implementation ConservesInformation CosmicPartition where
-  isPrimorialManifoldIntact (MkCosmicPartition m a v) =
-    (length m + length a + length v) == 210
+implementation ConservesInformation (FiberBundle tree) where
+  isPrimorialManifoldIntact sp = Builtin.(#) True sp

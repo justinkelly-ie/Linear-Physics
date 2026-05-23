@@ -1,11 +1,14 @@
 module Physics.Findings.GravitationalTimeDilation
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.SpreadPolynomial
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet
-import Universe.CosmicPartition
+import Physics.Findings.CosmicEnergyBudget
+
+import Physics.Findings.CosmicPartition
+import Math.Fraction
 
 %default total
 
@@ -25,7 +28,7 @@ public export
 interface ExperiencesTimeDilation a where
   ||| Computes the amount of computational lag (Time Dilation) a state suffers.
   ||| Returns the "Z-depth" or computational depth factor.
-  calculateLeibnizLag : a -> Double
+  calculateLeibnizLag : a -> Fraction
 
 ||| The total lag is derived from the topological complexity (length) of the 
 ||| un-annihilated DenseAMSet array.
@@ -34,16 +37,16 @@ implementation ExperiencesTimeDilation DarkPlusMatter where
   calculateLeibnizLag (MkDarkPlusMatter gen poly (MkDense xs) flavor) =
     -- A proxy for the Leibniz Lag: The more unresolved/unannihilated 
     -- particles trapped in the DenseAMSet, the higher the computational lag.
-    let unresolvableComplexity = cast (length xs)
+    let unresolvableComplexity = length xs
         -- S_7 gate amplifies this lag by its polynomial degree
-        gateAmplifier = if gen == 7 then 7.0 else 1.0
-    in (unresolvableComplexity * gateAmplifier) / (calculateGridLimit constructPrimorialGrid)
+        gateAmplifier = if gen == 7 then 7 else 1
+    in MkFraction (unresolvableComplexity * gateAmplifier) primordialGridStates
 
 ||| Calculates the Redshift (Z-factor) of emitted light.
 ||| High Time Dilation pushes the observed wavelength of light beyond the visible 
 ||| spectrum, hiding it from observers.
 public export
-calculateGravitationalRedshift : DarkPlusMatter -> Double
+calculateGravitationalRedshift : DarkPlusMatter -> Fraction
 calculateGravitationalRedshift state =
   let lag = calculateLeibnizLag state
-  in (1.0 + lag) -- The basic formula for Z-factor redshift
+  in addFraction (MkFraction 1 1) lag -- The basic formula for Z-factor redshift

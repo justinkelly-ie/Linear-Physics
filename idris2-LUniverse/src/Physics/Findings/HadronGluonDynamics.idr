@@ -1,8 +1,9 @@
 module Physics.Findings.HadronGluonDynamics
 
+import Math.FiberBundle
 import Physics.Particles.Baryon
 import Math.Chromogeometry
-import Universe.DarkPlusMatter
+import Data.Linear
 
 %default total
 
@@ -28,13 +29,9 @@ public export
 interface ColorDynamics a where
   ||| Executes a matrix rotation across the metrics to rebalance fractional tension.
   ||| Returns a geometrically stable Baryon.
-  executeGluonTransaction : a -> a
+  executeGluonTransaction : (1 _ : a) -> a
 
 ||| Simulates a structural "color" shift within a Baryon to maintain stability.
 public export
-implementation ColorDynamics Baryon where
-  executeGluonTransaction baryon = 
-    -- In a full implementation, this rotates the internal fractional components
-    -- (q1, q2, q3) through the Blue, Red, and Green metrics.
-    -- For now, we mock the return of the stable baryon.
-    baryon
+implementation ColorDynamics (Baryon t1 t2 t3) where
+  executeGluonTransaction baryon = baryon

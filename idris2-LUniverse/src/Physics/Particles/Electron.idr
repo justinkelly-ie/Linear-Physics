@@ -1,10 +1,11 @@
 module Physics.Particles.Electron
 
-import Universe.DarkPlusMatter
-import Physics.QuantumGates
+import Math.FiberBundle
+import Math.Polynumber
 import Math.DenseAMSet
 import Math.MaxelNL
 import Math.IntPolynumber
+import Data.Linear
 
 %default total
 
@@ -23,12 +24,8 @@ import Math.IntPolynumber
 ||| to stabilize! It natively balances the grid perfectly by itself.
 
 public export
-record Electron where
+record Electron tree where
   constructor MkElectron
-  state : DarkPlusMatter
+  1 state : FiberBundle tree
   ||| The electron must be bound to the visible Spatial Matter gate
-  0 isVisibleMatter : isMatterGate state = True
-  ||| The electron must be a baseline unity topological knot
-  0 isFundamentalKnot : maxelSupport state = MkDense [(MkPixelNL 0 0, 1)]
-
-
+  0 isVisibleMatter : dimensions (getGeometry tree) = 3

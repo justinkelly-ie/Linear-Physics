@@ -1,7 +1,7 @@
 module Physics.Particles.Bond
 
-import Universe.DarkPlusMatter
-import Physics.QuantumGates
+import Math.FiberBundle
+import Math.Polynumber
 
 %default total
 
@@ -16,8 +16,8 @@ import Physics.QuantumGates
 ||| matter particles to share the exact same natural-number coordinate 
 ||| simultaneously without violating the Pauli Exclusion Principle.
 public export
-record Bond where
+record Bond tree where
   constructor MkBond
-  state : DarkPlusMatter
+  1 state : FiberBundle tree
   ||| The bond corresponds to the n=4 Molecular Bond gate.
-  0 isBondGatePrf : isBondGate state = True
+  0 isBondGatePrf : dimensions (getGeometry tree) = 4

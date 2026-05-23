@@ -1,6 +1,6 @@
 module Physics.Findings.VacuumPairProduction
 
-import Universe.DarkPlusMatter
+import Math.FiberBundle
 import Math.IntPolynumber
 import Math.MaxelNL
 import Math.DenseAMSet

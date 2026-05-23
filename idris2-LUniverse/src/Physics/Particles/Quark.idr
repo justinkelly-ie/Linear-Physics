@@ -1,7 +1,7 @@
 module Physics.Particles.Quark
 
-import Universe.DarkPlusMatter
-import Physics.QuantumGates
+import Math.FiberBundle
+import Math.Polynumber
 
 %default total
 
@@ -11,7 +11,7 @@ import Physics.QuantumGates
 ||| and three internal Spreads. A solitary quark is geometrically undefined,
 ||| natively proving why "Asymptotic Freedom" traps them in composite structures.
 public export
-record Quark where
+record Quark tree where
   constructor MkQuark
-  state : DarkPlusMatter
-  0 isFractional : isFractionalChargeGate state = True
+  1 state : FiberBundle tree
+  0 isFractional : dimensions (getGeometry tree) = 5

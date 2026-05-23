@@ -1,7 +1,12 @@
 module Physics.Findings.CosmicEnergyBudget
 
-import Universe.CosmicPartition
+import Math.AMSet
+import Math.IntPolynumber
+import Math.Fraction
+
+import Math.FiberBundle
 import Math.MaxelNL
+import Physics.Findings.CosmicPartition
 
 %default total
 
@@ -30,26 +35,22 @@ import Math.MaxelNL
 public export
 record MassEnergyBudget where
   constructor MkMassEnergyBudget
-  darkEnergyRatio : Double
-  darkMatterRatio : Double
-  visibleMatterRatio : Double
+  darkEnergyRatio : Fraction
+  darkMatterRatio : Fraction
+  visibleMatterRatio : Fraction
 
 ||| Calculates the pure mathematical proportions of the 210-state universe.
+||| The 27:55:128 split is mandated by the combinatorial state limits of the partition grid.
 public export
 calculateCosmicBudget : CosmicPartition -> MassEnergyBudget
-calculateCosmicBudget (MkCosmicPartition m de dm) = 
-  let 
-      visibleStates : Double
-      visibleStates = cast (length m)
-      darkEnergyStates : Double
-      darkEnergyStates = cast (length de)
-      darkMatterStates : Double
-      darkMatterStates = cast (length dm)
-      totalStates   = visibleStates + darkEnergyStates + darkMatterStates
-      
-      deRatio = darkEnergyStates / totalStates
-      dmRatio = darkMatterStates / totalStates
-      visRatio = visibleStates / totalStates
+calculateCosmicBudget partition =
+  let visibleStates    : Nat = partitionSize partition.visibleMatter
+      darkMatterStates : Nat = partitionSize partition.darkMatter
+      darkEnergyStates : Nat = partitionSize partition.darkEnergy
+      totalStates      : Nat = visibleStates + darkMatterStates + darkEnergyStates
+      deRatio  = MkFraction darkEnergyStates  totalStates
+      dmRatio  = MkFraction darkMatterStates  totalStates
+      visRatio = MkFraction visibleStates     totalStates
   in MkMassEnergyBudget deRatio dmRatio visRatio
 
 ||| For testing purposes, we can verify the ratio matches the theoretical values.
@@ -57,4 +58,5 @@ public export
 verifyEmpiricalMatch : MassEnergyBudget -> Bool
 verifyEmpiricalMatch (MkMassEnergyBudget de dm vis) = 
   -- Checking if Dark Energy is ~61% and Dark Matter is ~26%
-  (de > 0.60 && de < 0.62) && (dm > 0.26 && dm < 0.27)
+  (de.numerator * 100 > de.denominator * 60 && de.numerator * 100 < de.denominator * 62) && 
+  (dm.numerator * 100 > dm.denominator * 26 && dm.numerator * 100 < dm.denominator * 27)

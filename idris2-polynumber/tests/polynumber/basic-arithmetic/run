@@ -1,5 +1,0 @@
-#!/bin/sh
-rm -rf build/
-idris2 --build test.ipkg
-build/exec/test
-rm -rf build/
