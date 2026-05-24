@@ -4,6 +4,9 @@ This section documents the physical research and formalizations arising from Lin
 
 ## Research Areas
 
+- **[Mathematical Type Architecture](./Types.md)**
+  Complete type signatures from `UnaryMultiset` through to `Physics.Core` aliases — showing how every physical concept is one parameterised Multiset.
+
 - **[Primorial Particle Mapping](./Particles.md)**
   Detailed findings documenting how standard model particles mathematically map to spread polynomials, chromogeometry, and the 137-grid in the Primorial Architecture.
 
