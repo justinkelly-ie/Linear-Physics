@@ -205,7 +205,6 @@ Linear-Physics/
 │
 ├── Library/Wiki/Code/           ← Comprehensive Code Architecture
 ├── idris2-chromogeometry/       ← Wildberger's 3-metric geometry
-├── idris2-Maxel/                ← Pixel/Maxel grid types
 ├── idris2-Multiset/    ← Multiset algebra + topology
 └── idris2-QuickCheck/           ← Property-testing suite (53 tests)
 ```
