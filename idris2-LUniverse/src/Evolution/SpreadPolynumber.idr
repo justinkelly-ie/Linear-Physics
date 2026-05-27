@@ -1,4 +1,4 @@
-module Physics.SpreadPolynumber
+module Evolution.SpreadPolynumber
 
 import Math.Multiset
 import Math.IntPolynumber

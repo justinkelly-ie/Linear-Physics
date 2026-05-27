@@ -9,7 +9,7 @@ import Evolution.Gate
 import Evolution.Transform
 import Evolution.Clock
 import Simplex.Core
-import Physics.SpreadPolynumber
+import Evolution.SpreadPolynumber
 
 import Math.Multiset
 import Math.Polynumber

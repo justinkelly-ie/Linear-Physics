@@ -174,7 +174,7 @@ All physical types are the **same data structure** parameterised differently. An
 
 ---
 
-## Layer 7: Twist and Localized Evolution (`Simplex.Twist` & `Physics.SpreadPolynumber`)
+## Layer 7: Twist and Localized Evolution (`Simplex.Twist` & `Evolution.SpreadPolynumber`)
 
 ### Twist (Gauge Field Holonomy)
 
