@@ -244,6 +244,29 @@ pack run idris2-Universe-Wiki.ipkg
 ```
 If you are unfamiliar with Idris2 but wish to explore the project, download Google Antigravity [^1] and have it assist you with the steps above; you can then prompt it to explore the model textually.
 
+### Running the 3D Visualizer
+
+The 3D Science Laboratory is built using Vite, React, and React-Three-Fiber. To launch the interactive playground:
+
+1. **Install Dependencies** (if first time):
+   ```bash
+   toolbox run -c fedora-toolbox-44 bash -c "cd visualizer && npm install"
+   ```
+
+2. **Generate Live Simulation States**:
+   Before running the visualizer, execute the compiler runner to populate the state serialization vectors:
+   ```bash
+   ./Scripts/run-tests.sh
+   ```
+
+3. **Start the Development Server**:
+   ```bash
+   toolbox run -c fedora-toolbox-44 bash -c "cd visualizer && npm run dev"
+   ```
+   Once started, open [http://localhost:5173](http://localhost:5173) in your browser to view the interactive 3D laboratory. Use the tabs at the top to toggle between:
+   * **Simulated Baryon Lock**: Interactive quark metrical tension solver.
+   * **Live Serialization Pipeline**: Real-time Idris 2 state vectors loaded via the state serialization bridge!
+
 ---
 
 ## Theoretical Foundation & Wiki
